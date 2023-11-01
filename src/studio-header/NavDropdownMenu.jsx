@@ -8,6 +8,15 @@ import {
 } from '@edx/paragon';
 
 const NavDropdownItem = ({ item }) => {
+  if (/^(?:\w+:)?\/\//.test(item.href)) {
+    return     <Dropdown.Item
+    href={item.href}
+    className="small"
+  >
+    {item.title}
+  </Dropdown.Item>
+  }
+  
   const navigate = useNavigate();
   const resolvedPath = useResolvedPath(item.href);
 
