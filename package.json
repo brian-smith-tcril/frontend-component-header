@@ -9,7 +9,7 @@
   "scripts": {
     "build": "make build",
     "i18n_extract": "fedx-scripts formatjs extract",
-    "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
+    "lint": "fedx-scripts eslint --fix --ext .js --ext .jsx .",
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "fedx-scripts webpack-dev-server --progress",
     "test": "fedx-scripts jest --coverage"
@@ -71,6 +71,7 @@
     "@edx/frontend-platform": "^4.0.0 || ^5.0.0 || ^6.0.0",
     "prop-types": "^15.5.10",
     "react": "^16.9.0 || ^17.0.0",
-    "react-dom": "^16.9.0 || ^17.0.0"
+    "react-dom": "^16.9.0 || ^17.0.0",
+    "react-router-dom": "^6.14.2"
   }
 }
