@@ -33,7 +33,6 @@ const UserMenu = ({
     />
   );
   const title = isMobile ? avatar : <>{avatar}{username}</>;
-  debugger;
 
   return (
     <NavDropdownMenu

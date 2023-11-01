@@ -39,8 +39,7 @@ const NavDropdownMenu = ({
     title={buttonTitle}
     variant="tertiary"
   >
-    {items.map(item => <NavDropdownItem item={item} />)}
-    {/* {items.map(item => (/^(?:\w+:)?\/\//.test(item.href)
+    {items.map(item => (/^(?:\w+:)?\/\//.test(item.href)
       ? (
         <Dropdown.Item
           href={item.href}
@@ -49,7 +48,7 @@ const NavDropdownMenu = ({
           {item.title}
         </Dropdown.Item>
       )
-      : <NavDropdownItem item={item} />))} */}
+      : <NavDropdownItem item={item} />))}
   </DropdownButton>
 );
 

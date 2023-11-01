@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate, useResolvedPath } from 'react-router-dom';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import {
   OverlayTrigger,
@@ -14,7 +15,11 @@ const CourseLockUp = ({
   title,
   // injected
   intl,
-}) => (
+}) => {
+  const navigate = useNavigate();
+  const resolvedPath = useResolvedPath(outlineLink);
+  
+  return (
   <OverlayTrigger
     placement="bottom"
     overlay={(
@@ -25,7 +30,8 @@ const CourseLockUp = ({
   >
     <a
       className="course-title-lockup w-25 mr-2"
-      href={outlineLink}
+      href={resolvedPath.pathname}
+      onClick={(e) => { e.preventDefault(); navigate(resolvedPath.pathname); }}
       aria-label={intl.formatMessage(messages['header.label.courseOutline'])}
       data-testid="course-lock-up-block"
     >
@@ -33,7 +39,7 @@ const CourseLockUp = ({
       <span className="d-block m-0 font-weight-bold text-gray-800" data-testid="course-title">{title}</span>
     </a>
   </OverlayTrigger>
-);
+)};
 
 CourseLockUp.propTypes = {
   number: PropTypes.string,
