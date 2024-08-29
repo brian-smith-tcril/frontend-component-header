@@ -152,7 +152,7 @@ class DesktopHeader extends React.Component {
                 <Logo className="logo" src={logo} alt={logoAltText} />
               </PluginSlot> :
               <PluginSlot id="linked_logo_slot">
-                <LinkedLogo className="logo" {...logoProps} />
+                <LinkedLogo className="logo" content={logoProps} />
               </PluginSlot>
             }
             <nav

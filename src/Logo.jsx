@@ -11,21 +11,20 @@ Logo.propTypes = {
 };
 
 const LinkedLogo = ({
-  href,
-  src,
-  alt,
+  content,
   ...attributes
 }) => (
-  <a href={href} {...attributes}>
-    <img className="d-block" src={src} alt={alt} />
-    <div>HIHIHIHI</div>
+  <a href={content.href} {...attributes}>
+    <img className="d-block" src={content.src} alt={content.alt} />
   </a>
 );
 
 LinkedLogo.propTypes = {
-  href: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  content: PropTypes.shape({
+    href: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  })
 };
 
 export { LinkedLogo, Logo };

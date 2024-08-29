@@ -1,5 +1,5 @@
 var _excluded = ["src", "alt"],
-  _excluded2 = ["href", "src", "alt"];
+  _excluded2 = ["content"];
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var s = Object.getOwnPropertySymbols(e); for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
 function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.includes(n)) continue; t[n] = r[n]; } return t; }
@@ -19,22 +19,22 @@ Logo.propTypes = {
   alt: PropTypes.string.isRequired
 };
 var LinkedLogo = function LinkedLogo(_ref2) {
-  var href = _ref2.href,
-    src = _ref2.src,
-    alt = _ref2.alt,
+  var content = _ref2.content,
     attributes = _objectWithoutProperties(_ref2, _excluded2);
   return /*#__PURE__*/React.createElement("a", _extends({
-    href: href
+    href: content.href
   }, attributes), /*#__PURE__*/React.createElement("img", {
     className: "d-block",
-    src: src,
-    alt: alt
-  }), /*#__PURE__*/React.createElement("div", null, "HIHIHIHI"));
+    src: content.src,
+    alt: content.alt
+  }));
 };
 LinkedLogo.propTypes = {
-  href: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired
+  content: PropTypes.shape({
+    href: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired
+  })
 };
 export { LinkedLogo, Logo };
 export default Logo;
