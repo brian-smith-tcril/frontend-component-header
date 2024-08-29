@@ -18,6 +18,7 @@ const LinkedLogo = ({
 }) => (
   <a href={href} {...attributes}>
     <img className="d-block" src={src} alt={alt} />
+    HIHIHIHI
   </a>
 );
 

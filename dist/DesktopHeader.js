@@ -16,6 +16,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { getConfig } from '@edx/frontend-platform';
+import { PluginSlot } from '@openedx/frontend-plugin-framework';
 
 // Local Components
 import { Menu, MenuTrigger, MenuContent } from './Menu';
@@ -182,13 +183,17 @@ var DesktopHeader = /*#__PURE__*/function (_React$Component) {
         className: "container-fluid ".concat(logoClasses)
       }, /*#__PURE__*/React.createElement("div", {
         className: "nav-container position-relative d-flex align-items-center"
-      }, logoDestination === null ? /*#__PURE__*/React.createElement(Logo, {
+      }, logoDestination === null ? /*#__PURE__*/React.createElement(PluginSlot, {
+        id: "logo_slot"
+      }, /*#__PURE__*/React.createElement(Logo, {
         className: "logo",
         src: logo,
         alt: logoAltText
-      }) : /*#__PURE__*/React.createElement(LinkedLogo, _extends({
+      })) : /*#__PURE__*/React.createElement(PluginSlot, {
+        id: "linked_logo_slot"
+      }, /*#__PURE__*/React.createElement(LinkedLogo, _extends({
         className: "logo"
-      }, logoProps)), /*#__PURE__*/React.createElement("div", null, "Hello"), /*#__PURE__*/React.createElement("nav", {
+      }, logoProps))), /*#__PURE__*/React.createElement("nav", {
         "aria-label": intl.formatMessage(messages['header.label.main.nav']),
         className: "nav main-nav"
       }, this.renderMainMenu()), /*#__PURE__*/React.createElement("nav", {
