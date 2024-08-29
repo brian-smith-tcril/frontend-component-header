@@ -29,7 +29,7 @@ var LinkedLogo = function LinkedLogo(_ref2) {
     className: "d-block",
     src: src,
     alt: alt
-  }), "HIHIHIHI");
+  }), /*#__PURE__*/React.createElement("div", null, "HIHIHIHI"));
 };
 LinkedLogo.propTypes = {
   href: PropTypes.string.isRequired,
