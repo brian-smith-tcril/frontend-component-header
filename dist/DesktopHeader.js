@@ -27,6 +27,7 @@ import messages from './Header.messages';
 
 // Assets
 import { CaretIcon } from './Icons';
+import LinkedLogoSlot from './plugin-slots/LinkedLogoSlot';
 var DesktopHeader = /*#__PURE__*/function (_React$Component) {
   function DesktopHeader(props) {
     _classCallCheck(this, DesktopHeader);
@@ -188,12 +189,7 @@ var DesktopHeader = /*#__PURE__*/function (_React$Component) {
         className: "logo",
         src: logo,
         alt: logoAltText
-      })) : /*#__PURE__*/React.createElement(PluginSlot, {
-        id: "linked_logo_slot"
-      }, /*#__PURE__*/React.createElement(LinkedLogo, {
-        className: "logo",
-        content: logoProps
-      })), /*#__PURE__*/React.createElement("nav", {
+      })) : /*#__PURE__*/React.createElement(LinkedLogoSlot, logoProps), /*#__PURE__*/React.createElement("nav", {
         "aria-label": intl.formatMessage(messages['header.label.main.nav']),
         className: "nav main-nav"
       }, this.renderMainMenu()), /*#__PURE__*/React.createElement("nav", {

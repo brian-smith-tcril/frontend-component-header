@@ -14,6 +14,7 @@ import messages from './Header.messages';
 
 // Assets
 import { CaretIcon } from './Icons';
+import LinkedLogoSlot from './plugin-slots/LinkedLogoSlot';
 
 class DesktopHeader extends React.Component {
   constructor(props) { // eslint-disable-line no-useless-constructor
@@ -151,9 +152,7 @@ class DesktopHeader extends React.Component {
               <PluginSlot id="logo_slot">
                 <Logo className="logo" src={logo} alt={logoAltText} />
               </PluginSlot> :
-              <PluginSlot id="linked_logo_slot">
-                <LinkedLogo className="logo" content={logoProps} />
-              </PluginSlot>
+              <LinkedLogoSlot {...logoProps} />
             }
             <nav
               aria-label={intl.formatMessage(messages['header.label.main.nav'])}

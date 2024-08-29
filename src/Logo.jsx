@@ -10,11 +10,8 @@ Logo.propTypes = {
   alt: PropTypes.string.isRequired,
 };
 
-const LinkedLogo = ({
-  content,
-  ...attributes
-}) => (
-  <a href={content.href} {...attributes}>
+const LinkedLogo = ({ content }) => (
+  <a href={content.href} className="logo">
     <img className="d-block" src={content.src} alt={content.alt} />
   </a>
 );
