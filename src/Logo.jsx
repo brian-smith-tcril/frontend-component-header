@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Logo = ({ content }) => (
-  <a href={content.href} className="logo">
-    <img className="d-block" src={content.src} alt={content.alt} />
+const Logo = ({
+  href,
+  src,
+  alt,
+  ...attributes
+}) => (
+  <a href={href} className="logo" {...attributes}>
+    <img className="d-block" src={src} alt={alt} />
   </a>
 );
 
 Logo.propTypes = {
-  content: PropTypes.shape({
-    href: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-  }).isRequired,
+  href: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
 };
 
 export default Logo;
