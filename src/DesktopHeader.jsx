@@ -7,14 +7,14 @@ import { PluginSlot } from '@openedx/frontend-plugin-framework';
 // Local Components
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
-import { LinkedLogo, Logo } from './Logo';
+import LogoSlot from './plugin-slots/LogoSlot';
+import LinkedLogoSlot from './plugin-slots/LinkedLogoSlot';
 
 // i18n
 import messages from './Header.messages';
 
 // Assets
 import { CaretIcon } from './Icons';
-import LinkedLogoSlot from './plugin-slots/LinkedLogoSlot';
 
 class DesktopHeader extends React.Component {
   constructor(props) { // eslint-disable-line no-useless-constructor
@@ -147,13 +147,7 @@ class DesktopHeader extends React.Component {
         <a className="nav-skip sr-only sr-only-focusable" href="#main">{intl.formatMessage(messages['header.label.skip.nav'])}</a>
         <div className={`container-fluid ${logoClasses}`}>
           <div className="nav-container position-relative d-flex align-items-center">
-            {
-              logoDestination === null ?
-              <PluginSlot id="logo_slot">
-                <Logo className="logo" src={logo} alt={logoAltText} />
-              </PluginSlot> :
-              <LinkedLogoSlot {...logoProps} />
-            }
+            { logoDestination === null ? <LogoSlot src={logo} alt={logoAltText} /> : <LinkedLogoSlot {...logoProps} /> }
             <nav
               aria-label={intl.formatMessage(messages['header.label.main.nav'])}
               className="nav main-nav"

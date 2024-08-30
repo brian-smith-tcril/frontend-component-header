@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Logo = ({ src, alt, ...attributes }) => (
-  <img src={src} alt={alt} {...attributes} />
+const Logo = ({ content }) => (
+  <img src={content.src} alt={content.alt} className="logo" />
 );
 
 Logo.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  content: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  })
 };
 
 const LinkedLogo = ({ content }) => (
