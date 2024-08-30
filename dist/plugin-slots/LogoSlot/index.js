@@ -7,7 +7,7 @@ var LogoSlot = function LogoSlot(_ref) {
     src = _ref.src,
     alt = _ref.alt;
   return /*#__PURE__*/React.createElement(PluginSlot, {
-    id: "linked_logo_slot"
+    id: "logo_slot"
   }, /*#__PURE__*/React.createElement(Logo, {
     content: {
       href: href,

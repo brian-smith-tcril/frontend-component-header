@@ -4,7 +4,7 @@ import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import Logo from '../../Logo';
 
 const LogoSlot = ({ href, src, alt }) => (
-  <PluginSlot id="linked_logo_slot">
+  <PluginSlot id="logo_slot">
     <Logo content={{ href, src, alt }} />
   </PluginSlot>
 );
