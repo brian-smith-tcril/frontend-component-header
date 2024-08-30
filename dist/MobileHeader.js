@@ -20,7 +20,6 @@ import { getConfig } from '@edx/frontend-platform';
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
-import LinkedLogoSlot from './plugin-slots/LinkedLogoSlot';
 
 // i18n
 import messages from './Header.messages';
@@ -175,10 +174,7 @@ var MobileHeader = /*#__PURE__*/function (_React$Component) {
         className: "nav flex-column pin-left pin-right border-top shadow py-2"
       }, this.renderMainMenu(), this.renderSecondaryMenu()))) : null, /*#__PURE__*/React.createElement("div", {
         className: "w-100 d-flex ".concat(logoClasses)
-      }, logoDestination === null ? /*#__PURE__*/React.createElement(LogoSlot, {
-        src: logo,
-        alt: logoAltText
-      }) : /*#__PURE__*/React.createElement(LinkedLogoSlot, logoProps)), userMenu.length > 0 || loggedOutItems.length > 0 ? /*#__PURE__*/React.createElement("div", {
+      }, /*#__PURE__*/React.createElement(LogoSlot, logoProps)), userMenu.length > 0 || loggedOutItems.length > 0 ? /*#__PURE__*/React.createElement("div", {
         className: "w-100 d-flex justify-content-end align-items-center"
       }, /*#__PURE__*/React.createElement(Menu, {
         tag: "nav",

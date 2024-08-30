@@ -8,15 +8,15 @@ This slot is used to replace/modify/hide the logo.
 
 ## Examples
 
-### Modify alt text
+### Modify URL
 
-The following `env.config.jsx` will modify the alt text for the logo.
+The following `env.config.jsx` will modify the link href for the logo.
 
 ```jsx
 import { PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
-const modifyLogoAlt = ( logo ) => {
-  logo.RenderWidget.props.content.alt = "Modified alt text";
+const modifyLogoHref = ( logo ) => {
+  logo.RenderWidget.props.content.href = "https://openedx.org/";
   return logo;
 };
 
@@ -28,7 +28,7 @@ const config = {
         {
           op: PLUGIN_OPERATIONS.Modify,
           widgetId: 'default_contents',
-          fn: modifyLogoAlt,
+          fn: modifyLogoHref,
         },
       ]
     },
@@ -40,7 +40,7 @@ export default config;
 
 ### Custom Component
 
-The following `env.config.jsx` will replace the linked logo entirely (in this case with a centered 🗺️ `h1`)
+The following `env.config.jsx` will replace the logo entirely (in this case with a centered 🗺️ `h1`)
 
 ```jsx
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';

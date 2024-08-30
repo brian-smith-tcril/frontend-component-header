@@ -21,7 +21,6 @@ import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
-import LinkedLogoSlot from './plugin-slots/LinkedLogoSlot';
 
 // i18n
 import messages from './Header.messages';
@@ -183,10 +182,7 @@ var DesktopHeader = /*#__PURE__*/function (_React$Component) {
         className: "container-fluid ".concat(logoClasses)
       }, /*#__PURE__*/React.createElement("div", {
         className: "nav-container position-relative d-flex align-items-center"
-      }, logoDestination === null ? /*#__PURE__*/React.createElement(LogoSlot, {
-        src: logo,
-        alt: logoAltText
-      }) : /*#__PURE__*/React.createElement(LinkedLogoSlot, logoProps), /*#__PURE__*/React.createElement("nav", {
+      }, /*#__PURE__*/React.createElement(LogoSlot, logoProps), /*#__PURE__*/React.createElement("nav", {
         "aria-label": intl.formatMessage(messages['header.label.main.nav']),
         className: "nav main-nav"
       }, this.renderMainMenu()), /*#__PURE__*/React.createElement("nav", {

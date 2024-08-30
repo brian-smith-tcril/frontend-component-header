@@ -5,7 +5,7 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
 import AnonymousUserMenu from './AnonymousUserMenu';
 import AuthenticatedUserDropdown from './AuthenticatedUserDropdown';
-import LinkedLogoSlot from '../plugin-slots/LinkedLogoSlot';
+import LogoSlot from '../plugin-slots/LogoSlot';
 import messages from './messages';
 var LearningHeader = function LearningHeader(_ref) {
   var courseOrg = _ref.courseOrg,
@@ -15,7 +15,7 @@ var LearningHeader = function LearningHeader(_ref) {
     showUserDropdown = _ref.showUserDropdown;
   var _useContext = useContext(AppContext),
     authenticatedUser = _useContext.authenticatedUser;
-  var headerLogo = /*#__PURE__*/React.createElement(LinkedLogoSlot, {
+  var headerLogo = /*#__PURE__*/React.createElement(LogoSlot, {
     href: "".concat(getConfig().LMS_BASE_URL, "/dashboard"),
     src: getConfig().LOGO_URL,
     alt: getConfig().SITE_NAME
