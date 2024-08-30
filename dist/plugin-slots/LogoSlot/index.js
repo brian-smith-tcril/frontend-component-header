@@ -7,7 +7,10 @@ var LogoSlot = function LogoSlot(_ref) {
     src = _ref.src,
     alt = _ref.alt;
   return /*#__PURE__*/React.createElement(PluginSlot, {
-    id: "logo_slot"
+    id: "logo_slot",
+    slotOptions: {
+      mergeProps: true
+    }
   }, /*#__PURE__*/React.createElement(Logo, {
     content: {
       href: href,
