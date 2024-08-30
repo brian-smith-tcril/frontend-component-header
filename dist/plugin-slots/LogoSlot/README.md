@@ -1,34 +1,34 @@
-# Linked Logo Slot
+# Logo Slot
 
-### Slot ID: `linked_logo_slot`
+### Slot ID: `logo_slot`
 
 ## Description
 
-This slot is used to replace/modify/hide the linked logo.
+This slot is used to replace/modify/hide the logo.
 
 ## Examples
 
-### Modify URL
+### Modify alt text
 
-The following `env.config.jsx` will modify the link href for the linked logo.
+The following `env.config.jsx` will modify the alt text for the logo.
 
 ```jsx
 import { PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
-const modifyLogoHref = ( logo ) => {
-  logo.RenderWidget.props.content.href = "https://openedx.org/";
+const modifyLogoAlt = ( logo ) => {
+  logo.RenderWidget.props.content.alt = "Modified alt text";
   return logo;
 };
 
 const config = {
   pluginSlots: {
-    linked_logo_slot: {
+    logo_slot: {
       keepDefault: true,
       plugins: [
         {
           op: PLUGIN_OPERATIONS.Modify,
           widgetId: 'default_contents',
-          fn: modifyLogoHref,
+          fn: modifyLogoAlt,
         },
       ]
     },
@@ -47,7 +47,7 @@ import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-frame
 
 const config = {
   pluginSlots: {
-    linked_logo_slot: {
+    logo_slot: {
       keepDefault: false,
       plugins: [
         {

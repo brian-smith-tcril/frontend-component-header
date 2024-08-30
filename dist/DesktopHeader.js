@@ -20,14 +20,14 @@ import { PluginSlot } from '@openedx/frontend-plugin-framework';
 // Local Components
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
-import { LinkedLogo, Logo } from './Logo';
+import LogoSlot from './plugin-slots/LogoSlot';
+import LinkedLogoSlot from './plugin-slots/LinkedLogoSlot';
 
 // i18n
 import messages from './Header.messages';
 
 // Assets
 import { CaretIcon } from './Icons';
-import LinkedLogoSlot from './plugin-slots/LinkedLogoSlot';
 var DesktopHeader = /*#__PURE__*/function (_React$Component) {
   function DesktopHeader(props) {
     _classCallCheck(this, DesktopHeader);
@@ -183,13 +183,10 @@ var DesktopHeader = /*#__PURE__*/function (_React$Component) {
         className: "container-fluid ".concat(logoClasses)
       }, /*#__PURE__*/React.createElement("div", {
         className: "nav-container position-relative d-flex align-items-center"
-      }, logoDestination === null ? /*#__PURE__*/React.createElement(PluginSlot, {
-        id: "logo_slot"
-      }, /*#__PURE__*/React.createElement(Logo, {
-        className: "logo",
+      }, logoDestination === null ? /*#__PURE__*/React.createElement(LogoSlot, {
         src: logo,
         alt: logoAltText
-      })) : /*#__PURE__*/React.createElement(LinkedLogoSlot, logoProps), /*#__PURE__*/React.createElement("nav", {
+      }) : /*#__PURE__*/React.createElement(LinkedLogoSlot, logoProps), /*#__PURE__*/React.createElement("nav", {
         "aria-label": intl.formatMessage(messages['header.label.main.nav']),
         className: "nav main-nav"
       }, this.renderMainMenu()), /*#__PURE__*/React.createElement("nav", {
