@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
-import { LinkedLogo } from '../../Logo';
+import Logo from '../../Logo';
 
 const LogoSlot = ({ href, src, alt }) => (
   <PluginSlot id="linked_logo_slot">
-    <LinkedLogo content={{ href, src, alt }} />
+    <Logo content={{ href, src, alt }} />
   </PluginSlot>
 );
 
