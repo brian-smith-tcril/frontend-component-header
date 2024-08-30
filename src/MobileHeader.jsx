@@ -7,7 +7,6 @@ import { getConfig } from '@edx/frontend-platform';
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
-import LinkedLogoSlot from './plugin-slots/LinkedLogoSlot';
 
 // i18n
 import messages from './Header.messages';
@@ -156,7 +155,7 @@ class MobileHeader extends React.Component {
           </div>
         ) : null}
         <div className={`w-100 d-flex ${logoClasses}`}>
-          { logoDestination === null ? <LogoSlot src={logo} alt={logoAltText} /> : <LinkedLogoSlot {...logoProps} /> }
+          <LogoSlot {...logoProps} />
         </div>
         {userMenu.length > 0 || loggedOutItems.length > 0 ? (
           <div className="w-100 d-flex justify-content-end align-items-center">

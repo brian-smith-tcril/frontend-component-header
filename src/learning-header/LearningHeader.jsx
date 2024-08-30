@@ -6,7 +6,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 
 import AnonymousUserMenu from './AnonymousUserMenu';
 import AuthenticatedUserDropdown from './AuthenticatedUserDropdown';
-import LinkedLogoSlot from '../plugin-slots/LinkedLogoSlot';
+import LogoSlot from '../plugin-slots/LogoSlot';
 import messages from './messages';
 
 
@@ -16,7 +16,7 @@ const LearningHeader = ({
   const { authenticatedUser } = useContext(AppContext);
 
   const headerLogo = (
-    <LinkedLogoSlot
+    <LogoSlot
       href={`${getConfig().LMS_BASE_URL}/dashboard`}
       src={getConfig().LOGO_URL}
       alt={getConfig().SITE_NAME}
