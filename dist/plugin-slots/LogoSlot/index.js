@@ -12,11 +12,9 @@ var LogoSlot = function LogoSlot(_ref) {
       mergeProps: true
     }
   }, /*#__PURE__*/React.createElement(Logo, {
-    content: {
-      href: href,
-      src: src,
-      alt: alt
-    }
+    href: href,
+    src: src,
+    alt: alt
   }));
 };
 LogoSlot.propTypes = {

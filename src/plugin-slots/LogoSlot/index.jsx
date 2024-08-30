@@ -10,7 +10,7 @@ const LogoSlot = ({ href, src, alt }) => (
       mergeProps: true,
     }}
   >
-    <Logo content={{ href, src, alt }} />
+    <Logo href={href} src={src} alt={alt} />
   </PluginSlot>
 );
 
