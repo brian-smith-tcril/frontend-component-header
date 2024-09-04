@@ -16,7 +16,7 @@ The following `env.config.jsx` will modify the link href for the logo.
 import { PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
 const modifyLogoHref = ( logo ) => {
-  logo.RenderWidget.props.content.href = "https://openedx.org/";
+  logo.content.href = "https://openedx.org/";
   return logo;
 };
 
