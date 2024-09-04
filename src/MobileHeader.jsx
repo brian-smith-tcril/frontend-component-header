@@ -155,7 +155,7 @@ class MobileHeader extends React.Component {
           </div>
         ) : null}
         <div className={`w-100 d-flex ${logoClasses}`}>
-          <LogoSlot {...logoProps} />
+          <LogoSlot {...logoProps} itemType="http://schema.org/Organization" />
         </div>
         {userMenu.length > 0 || loggedOutItems.length > 0 ? (
           <div className="w-100 d-flex justify-content-end align-items-center">

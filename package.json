@@ -60,7 +60,7 @@
     "@fortawesome/free-regular-svg-icons": "6.6.0",
     "@fortawesome/free-solid-svg-icons": "6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@openedx/frontend-plugin-framework": "github:brian-smith-tcril/frontend-plugin-framework#1eae1908414076151cc76cca3498c6bf407c9bc3",
+    "@openedx/frontend-plugin-framework": "github:brian-smith-tcril/frontend-plugin-framework#f9461d2f3b2f5b2cc68c62b3c0c6a9805c138b64",
     "axios-mock-adapter": "1.22.0",
     "babel-polyfill": "6.26.0",
     "jest-environment-jsdom": "^29.7.0",
