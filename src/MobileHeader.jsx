@@ -7,6 +7,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
+import MobileMainMenuSlot from './plugin-slots/MobileMainMenuSlot';
 
 // i18n
 import messages from './Header.messages';
@@ -14,62 +15,61 @@ import messages from './Header.messages';
 // Assets
 import { MenuIcon } from './Icons';
 
+const renderMenu = (menu) => {
+  // Nodes are accepted as a prop
+  if (!Array.isArray(menu)) {
+    return menu;
+  }
+
+  return menu.map((menuItem) => {
+    const {
+      type,
+      href,
+      content,
+      submenuContent,
+      disabled,
+      isActive,
+      onClick,
+    } = menuItem;
+
+    if (type === 'item') {
+      return (
+        <a
+          key={`${type}-${content}`}
+          className={`nav-link${disabled ? ' disabled' : ''}${isActive ? ' active' : ''}`}
+          href={href}
+          onClick={onClick || null}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    return (
+      <Menu key={`${type}-${content}`} tag="div" className="nav-item">
+        <MenuTrigger onClick={onClick || null} tag="a" role="button" tabIndex="0" className="nav-link">
+          {content}
+        </MenuTrigger>
+        <MenuContent className="position-static pin-left pin-right py-2">
+          {submenuContent}
+        </MenuContent>
+      </Menu>
+    );
+  });
+}
+
+const MobileHeaderMainMenu = ({menu}) => {
+  return renderMenu(menu);
+}
+
 class MobileHeader extends React.Component {
   constructor(props) { // eslint-disable-line no-useless-constructor
     super(props);
   }
 
-  renderMenu(menu) {
-    // Nodes are accepted as a prop
-    if (!Array.isArray(menu)) {
-      return menu;
-    }
-
-    return menu.map((menuItem) => {
-      const {
-        type,
-        href,
-        content,
-        submenuContent,
-        disabled,
-        isActive,
-        onClick,
-      } = menuItem;
-
-      if (type === 'item') {
-        return (
-          <a
-            key={`${type}-${content}`}
-            className={`nav-link${disabled ? ' disabled' : ''}${isActive ? ' active' : ''}`}
-            href={href}
-            onClick={onClick || null}
-          >
-            {content}
-          </a>
-        );
-      }
-
-      return (
-        <Menu key={`${type}-${content}`} tag="div" className="nav-item">
-          <MenuTrigger onClick={onClick || null} tag="a" role="button" tabIndex="0" className="nav-link">
-            {content}
-          </MenuTrigger>
-          <MenuContent className="position-static pin-left pin-right py-2">
-            {submenuContent}
-          </MenuContent>
-        </Menu>
-      );
-    });
-  }
-
   renderMainMenu() {
-    const { mainMenu } = this.props;
-    return this.renderMenu(mainMenu);
-  }
-
-  renderSecondaryMenu() {
-    const { secondaryMenu } = this.props;
-    return this.renderMenu(secondaryMenu);
+    const { mainMenu, secondaryMenu } = this.props;
+    return <MobileMainMenuSlot menu={[...mainMenu, ...secondaryMenu]}/>;
   }
 
   renderUserMenuItems() {
@@ -149,7 +149,6 @@ class MobileHeader extends React.Component {
                 className="nav flex-column pin-left pin-right border-top shadow py-2"
               >
                 {this.renderMainMenu()}
-                {this.renderSecondaryMenu()}
               </MenuContent>
             </Menu>
           </div>
@@ -230,4 +229,5 @@ MobileHeader.defaultProps = {
 
 };
 
+export { MobileHeaderMainMenu };
 export default injectIntl(MobileHeader);

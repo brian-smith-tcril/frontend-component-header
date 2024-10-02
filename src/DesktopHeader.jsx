@@ -7,6 +7,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
+import DesktopMainMenuSlot from './plugin-slots/DesktopMainMenuSlot';
 
 // i18n
 import messages from './Header.messages';
@@ -14,62 +15,66 @@ import messages from './Header.messages';
 // Assets
 import { CaretIcon } from './Icons';
 
+const renderMenu = (menu) => {
+  // Nodes are accepted as a prop
+  if (!Array.isArray(menu)) {
+    return menu;
+  }
+
+  return menu.map((menuItem) => {
+    const {
+      type,
+      href,
+      content,
+      submenuContent,
+      disabled,
+      isActive,
+      onClick,
+    } = menuItem;
+
+    if (type === 'item') {
+      return (
+        <a
+          key={`${type}-${content}`}
+          className={`nav-link${disabled ? ' disabled' : ''}${isActive ? ' active' : ''}`}
+          href={href}
+          onClick={onClick || null}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    return (
+      <Menu key={`${type}-${content}`} tag="div" className="nav-item" respondToPointerEvents>
+        <MenuTrigger onClick={onClick || null} tag="a" className="nav-link d-inline-flex align-items-center" href={href}>
+          {content} <CaretIcon role="img" aria-hidden focusable="false" />
+        </MenuTrigger>
+        <MenuContent className="pin-left pin-right shadow py-2">
+          {submenuContent}
+        </MenuContent>
+      </Menu>
+    );
+  });
+}
+
+const DesktopHeaderMainMenu = ({menu}) => {
+  return renderMenu(menu);
+}
+
 class DesktopHeader extends React.Component {
   constructor(props) { // eslint-disable-line no-useless-constructor
     super(props);
   }
 
-  renderMenu(menu) {
-    // Nodes are accepted as a prop
-    if (!Array.isArray(menu)) {
-      return menu;
-    }
-
-    return menu.map((menuItem) => {
-      const {
-        type,
-        href,
-        content,
-        submenuContent,
-        disabled,
-        isActive,
-        onClick,
-      } = menuItem;
-
-      if (type === 'item') {
-        return (
-          <a
-            key={`${type}-${content}`}
-            className={`nav-link${disabled ? ' disabled' : ''}${isActive ? ' active' : ''}`}
-            href={href}
-            onClick={onClick || null}
-          >
-            {content}
-          </a>
-        );
-      }
-
-      return (
-        <Menu key={`${type}-${content}`} tag="div" className="nav-item" respondToPointerEvents>
-          <MenuTrigger onClick={onClick || null} tag="a" className="nav-link d-inline-flex align-items-center" href={href}>
-            {content} <CaretIcon role="img" aria-hidden focusable="false" />
-          </MenuTrigger>
-          <MenuContent className="pin-left pin-right shadow py-2">
-            {submenuContent}
-          </MenuContent>
-        </Menu>
-      );
-    });
-  }
-
   renderMainMenu() {
     const { mainMenu } = this.props;
-    return this.renderMenu(mainMenu);
+    return <DesktopMainMenuSlot menu={mainMenu}/>;
   }
 
   renderSecondaryMenu() {
     const { secondaryMenu } = this.props;
-    return this.renderMenu(secondaryMenu);
+    return renderMenu(secondaryMenu);
   }
 
   renderUserMenu() {
@@ -219,4 +224,5 @@ DesktopHeader.defaultProps = {
   loggedIn: false,
 };
 
+export { DesktopHeaderMainMenu };
 export default injectIntl(DesktopHeader);
