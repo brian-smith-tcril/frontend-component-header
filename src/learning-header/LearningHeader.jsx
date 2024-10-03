@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { injectIntl, useIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
 
 import AnonymousUserMenu from './AnonymousUserMenu';
@@ -9,6 +9,7 @@ import AuthenticatedUserDropdown from './AuthenticatedUserDropdown';
 import LogoSlot from '../plugin-slots/LogoSlot';
 import CourseInfoSlot from '../plugin-slots/CourseInfoSlot';
 import messages from './messages';
+import LearningHelpSlot from '../plugin-slots/LearningHelpSlot';
 
 const LearningHeaderCourseInfo = ({
   courseOrg,
@@ -20,6 +21,13 @@ const LearningHeaderCourseInfo = ({
     <span className="d-block m-0 font-weight-bold course-title">{courseTitle}</span>
   </div>
 );
+
+const LearningHeaderHelpLink = () => {
+  const intl = useIntl();
+  return (
+    <a className="text-gray-700" href={`${getConfig().SUPPORT_URL}`}>{intl.formatMessage(messages.help)}</a>
+  );
+};
 
 const LearningHeader = ({
   courseOrg, courseNumber, courseTitle, intl, showUserDropdown,
@@ -43,9 +51,12 @@ const LearningHeader = ({
           <CourseInfoSlot courseOrg={courseOrg} courseNumber={courseNumber} courseTitle={courseTitle} />
         </div>
         {showUserDropdown && authenticatedUser && (
-        <AuthenticatedUserDropdown
-          username={authenticatedUser.username}
-        />
+        <> 
+          <LearningHelpSlot /> 
+          <AuthenticatedUserDropdown
+            username={authenticatedUser.username}
+          />
+        </>
         )}
         {showUserDropdown && !authenticatedUser && (
         <AnonymousUserMenu />
@@ -70,5 +81,5 @@ LearningHeader.defaultProps = {
   showUserDropdown: true,
 };
 
-export { LearningHeaderCourseInfo };
+export { LearningHeaderCourseInfo, LearningHeaderHelpLink };
 export default injectIntl(LearningHeader);
