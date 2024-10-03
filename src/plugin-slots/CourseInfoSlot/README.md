@@ -53,7 +53,7 @@ const config = {
         {
           op: PLUGIN_OPERATIONS.Insert,
           widget: {
-            id: 'custom_logo_component',
+            id: 'custom_course_info_component',
             type: DIRECT_PLUGIN,
             RenderWidget: () => (
               <h1 style={{textAlign: 'center'}}>🗺️</h1>
@@ -77,28 +77,36 @@ import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-frame
 
 const config = {
   pluginSlots: {
-    desktop_main_menu_slot: {
+    course_info_slot: {
       keepDefault: true,
       plugins: [
         {
           op: PLUGIN_OPERATIONS.Insert,
           widget: {
-            id: 'custom_before_main_menu_component',
+            id: 'custom_before_course_info_component',
             type: DIRECT_PLUGIN,
             priority: 10,
             RenderWidget: () => (
-              <h1 style={{textAlign: 'center'}}>🌜</h1>
+              <h3 style={{
+                marginTop: 'auto',
+                marginBottom: 'auto',
+                marginRight: '0.5rem',
+              }}>🌜</h3>
             ),
           },
         },
         {
           op: PLUGIN_OPERATIONS.Insert,
           widget: {
-            id: 'custom_after_main_menu_component',
+            id: 'custom_after_course_info_component',
             type: DIRECT_PLUGIN,
             priority: 90,
             RenderWidget: () => (
-              <h1 style={{textAlign: 'center'}}>🌛</h1>
+              <h3 style={{
+                marginTop: 'auto',
+                marginBottom: 'auto',
+                marginLeft: '0.5rem',
+              }}>🌛</h3>
             ),
           },
         },

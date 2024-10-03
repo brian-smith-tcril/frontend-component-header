@@ -15,10 +15,10 @@ const LearningHeaderCourseInfo = ({
   courseNumber,
   courseTitle
 }) => (
-  <div className="flex-grow-1 course-title-lockup" style={{ lineHeight: 1 }}>
+  <div style={{ minWidth: 0 }}>
     <span className="d-block small m-0">{courseOrg} {courseNumber}</span>
     <span className="d-block m-0 font-weight-bold course-title">{courseTitle}</span>
-  </div>  
+  </div>
 );
 
 const LearningHeader = ({
@@ -39,7 +39,9 @@ const LearningHeader = ({
       <a className="sr-only sr-only-focusable" href="#main-content">{intl.formatMessage(messages.skipNavLink)}</a>
       <div className="container-xl py-2 d-flex align-items-center">
         {headerLogo}
-        <CourseInfoSlot courseOrg={courseOrg} courseNumber={courseNumber} courseTitle={courseTitle} />
+        <div className="flex-grow-1 course-title-lockup d-flex" style={{ lineHeight: 1 }}>
+          <CourseInfoSlot courseOrg={courseOrg} courseNumber={courseNumber} courseTitle={courseTitle} />
+        </div>
         {showUserDropdown && authenticatedUser && (
         <AuthenticatedUserDropdown
           username={authenticatedUser.username}
