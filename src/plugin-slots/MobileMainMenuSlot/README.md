@@ -1,16 +1,16 @@
-# Desktop Main Menu Slot
+# Mobile Main Menu Slot
 
-### Slot ID: `desktop_main_menu_slot`
+### Slot ID: `mobile_main_menu_slot`
 
 ## Description
 
-This slot is used to replace/modify/hide the desktop main menu.
+This slot is used to replace/modify/hide the mobile main menu.
 
 ## Examples
 
 ### Modify Items
 
-The following `env.config.jsx` will modify the items in the desktop main menu.
+The following `env.config.jsx` will modify the items in the mobile main menu.
 
 ```jsx
 import { PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
@@ -38,7 +38,7 @@ const modifyMainMenu = ( widget ) => {
 
 const config = {
   pluginSlots: {
-    desktop_main_menu_slot: {
+    mobile_main_menu_slot: {
       keepDefault: true,
       plugins: [
         {
@@ -63,7 +63,7 @@ import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-frame
 
 const config = {
   pluginSlots: {
-    desktop_main_menu_slot: {
+    mobile_main_menu_slot: {
       keepDefault: false,
       plugins: [
         {
