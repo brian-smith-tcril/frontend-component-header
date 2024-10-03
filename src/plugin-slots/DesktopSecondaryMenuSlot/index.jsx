@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import { DesktopHeaderMainOrSecondaryMenu } from '../../DesktopHeader';
 
-const DesktopMainMenuSlot = ({
+const DesktopSecondaryMenuSlot = ({
   menu
 }) => (
   <PluginSlot
-    id="desktop_main_menu_slot"
+    id="desktop_secondary_menu_slot"
     slotOptions={{
       mergeProps: true,
     }}
@@ -22,4 +22,4 @@ const DesktopMainMenuSlot = ({
 //   alt: PropTypes.string.isRequired,
 // };
 
-export default DesktopMainMenuSlot;
+export default DesktopSecondaryMenuSlot;

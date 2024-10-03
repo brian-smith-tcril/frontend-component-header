@@ -8,6 +8,7 @@ import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
 import DesktopMainMenuSlot from './plugin-slots/DesktopMainMenuSlot';
+import DesktopSecondaryMenuSlot from './plugin-slots/DesktopSecondaryMenuSlot';
 
 // i18n
 import messages from './Header.messages';
@@ -58,7 +59,7 @@ const renderMenu = (menu) => {
   });
 }
 
-const DesktopHeaderMainMenu = ({menu}) => {
+const DesktopHeaderMainOrSecondaryMenu = ({menu}) => {
   return renderMenu(menu);
 }
 
@@ -74,7 +75,7 @@ class DesktopHeader extends React.Component {
 
   renderSecondaryMenu() {
     const { secondaryMenu } = this.props;
-    return renderMenu(secondaryMenu);
+    return <DesktopSecondaryMenuSlot menu={secondaryMenu}/>
   }
 
   renderUserMenu() {
@@ -224,5 +225,5 @@ DesktopHeader.defaultProps = {
   loggedIn: false,
 };
 
-export { DesktopHeaderMainMenu };
+export { DesktopHeaderMainOrSecondaryMenu };
 export default injectIntl(DesktopHeader);
