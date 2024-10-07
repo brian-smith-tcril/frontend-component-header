@@ -16,7 +16,7 @@ import messages from './Header.messages';
 // Assets
 import { CaretIcon } from './Icons';
 
-const renderMenu = (menu) => {
+const DesktopHeaderMainOrSecondaryMenu = ({menu}) => {
   // Nodes are accepted as a prop
   if (!Array.isArray(menu)) {
     return menu;
@@ -59,8 +59,16 @@ const renderMenu = (menu) => {
   });
 }
 
-const DesktopHeaderMainOrSecondaryMenu = ({menu}) => {
-  return renderMenu(menu);
+const DesktopLoggedOutItems = ({items}) => {
+  return items.map((item, i, arr) => (
+    <a
+      key={`${item.type}-${item.content}`}
+      className={i < arr.length - 1 ? 'btn mr-2 btn-link' : 'btn mr-2 btn-outline-primary'}
+      href={item.href}
+    >
+      {item.content}
+    </a>
+  ));
 }
 
 class DesktopHeader extends React.Component {
@@ -123,16 +131,7 @@ class DesktopHeader extends React.Component {
 
   renderLoggedOutItems() {
     const { loggedOutItems } = this.props;
-
-    return loggedOutItems.map((item, i, arr) => (
-      <a
-        key={`${item.type}-${item.content}`}
-        className={i < arr.length - 1 ? 'btn mr-2 btn-link' : 'btn mr-2 btn-outline-primary'}
-        href={item.href}
-      >
-        {item.content}
-      </a>
-    ));
+    return <DesktopLoggedOutItems items={loggedOutItems}/>
   }
 
   render() {
@@ -225,5 +224,5 @@ DesktopHeader.defaultProps = {
   loggedIn: false,
 };
 
-export { DesktopHeaderMainOrSecondaryMenu };
+export { DesktopHeaderMainOrSecondaryMenu, DesktopLoggedOutItems };
 export default injectIntl(DesktopHeader);
