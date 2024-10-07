@@ -7,6 +7,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
+import DesktopLoggedOutItemsSlot from './plugin-slots/DesktopLoggedOutItemsSlot';
 import DesktopMainMenuSlot from './plugin-slots/DesktopMainMenuSlot';
 import DesktopSecondaryMenuSlot from './plugin-slots/DesktopSecondaryMenuSlot';
 
@@ -131,7 +132,7 @@ class DesktopHeader extends React.Component {
 
   renderLoggedOutItems() {
     const { loggedOutItems } = this.props;
-    return <DesktopLoggedOutItems items={loggedOutItems}/>
+    return <DesktopLoggedOutItemsSlot items={loggedOutItems}/>
   }
 
   render() {

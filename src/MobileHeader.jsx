@@ -7,6 +7,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
+import MobileLoggedOutItemsSlot from './plugin-slots/MobileLoggedOutItemsSlot';
 import MobileMainMenuSlot from './plugin-slots/MobileMainMenuSlot';
 
 // i18n
@@ -15,7 +16,7 @@ import messages from './Header.messages';
 // Assets
 import { MenuIcon } from './Icons';
 
-const renderMenu = (menu) => {
+const MobileHeaderMainMenu = ({menu}) => {
   // Nodes are accepted as a prop
   if (!Array.isArray(menu)) {
     return menu;
@@ -58,8 +59,17 @@ const renderMenu = (menu) => {
   });
 }
 
-const MobileHeaderMainMenu = ({menu}) => {
-  return renderMenu(menu);
+const MobileLoggedOutItems = ({items}) => {
+  return items.map(({ type, href, content }, i, arr) => (
+    <li className="nav-item px-3 my-2" key={`${type}-${content}`}>
+      <a
+        className={i < arr.length - 1 ? 'btn btn-block btn-outline-primary' : 'btn btn-block btn-primary'}
+        href={href}
+      >
+        {content}
+      </a>
+    </li>
+  ));
 }
 
 class MobileHeader extends React.Component {
@@ -94,17 +104,7 @@ class MobileHeader extends React.Component {
 
   renderLoggedOutItems() {
     const { loggedOutItems } = this.props;
-
-    return loggedOutItems.map(({ type, href, content }, i, arr) => (
-      <li className="nav-item px-3 my-2" key={`${type}-${content}`}>
-        <a
-          className={i < arr.length - 1 ? 'btn btn-block btn-outline-primary' : 'btn btn-block btn-primary'}
-          href={href}
-        >
-          {content}
-        </a>
-      </li>
-    ));
+    return <MobileLoggedOutItemsSlot items={loggedOutItems} />
   }
 
   render() {
@@ -229,5 +229,5 @@ MobileHeader.defaultProps = {
 
 };
 
-export { MobileHeaderMainMenu };
+export { MobileHeaderMainMenu, MobileLoggedOutItems };
 export default injectIntl(MobileHeader);
