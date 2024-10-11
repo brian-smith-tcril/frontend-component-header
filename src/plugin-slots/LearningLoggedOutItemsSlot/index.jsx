@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
-import { DesktopLoggedOutItems } from '../../DesktopHeader';
+import { LearningLoggedOutButtons } from '../../learning-header/AnonymousUserMenu';
 
 const LearningLoggedOutItemsSlot = ({
-  items
+  buttonsInfo
 }) => (
   <PluginSlot
     id="learning_logged_out_items_slot"
@@ -12,7 +12,7 @@ const LearningLoggedOutItemsSlot = ({
       mergeProps: true,
     }}
   >
-    <DesktopLoggedOutItems items={items} />
+    <LearningLoggedOutButtons buttonsInfo={buttonsInfo} />
   </PluginSlot>
 );
 

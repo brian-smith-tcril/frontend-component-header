@@ -4,10 +4,11 @@ import { getConfig } from '@edx/frontend-platform';
 import { getLoginRedirectUrl } from '@edx/frontend-platform/auth';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Button } from '@openedx/paragon';
+import LearningLoggedOutItemsSlot from '../plugin-slots/LearningLoggedOutItemsSlot';
 
 import genericMessages from '../generic/messages';
 
-const LoggedOutButtons = ({buttonsInfo}) => {
+const LearningLoggedOutButtons = ({buttonsInfo}) => {
   return buttonsInfo.map((buttonInfo) => (
     <Button
       className='ml-3'
@@ -32,15 +33,12 @@ const AnonymousUserMenu = ({ intl }) => {
     }
   ];
 
-  return (
-    <div>
-      <LoggedOutButtons buttonsInfo={buttonsInfo} />
-    </div>
-  )
+  return <LearningLoggedOutItemsSlot buttonsInfo={buttonsInfo} />;
 };
 
 AnonymousUserMenu.propTypes = {
   intl: intlShape.isRequired,
 };
 
+export { LearningLoggedOutButtons };
 export default injectIntl(AnonymousUserMenu);
