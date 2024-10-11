@@ -182,30 +182,33 @@ class MobileHeader extends React.Component {
   }
 }
 
-MobileHeader.propTypes = {
-  mainMenu: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.array,
-  ]),
-  secondaryMenu: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.array,
-  ]),
-  userMenu: PropTypes.arrayOf(PropTypes.shape({
-    heading: PropTypes.string,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      type: PropTypes.oneOf(['item', 'menu']),
-      href: PropTypes.string,
-      content: PropTypes.string,
-      isActive: PropTypes.bool,
-      onClick: PropTypes.func,
-    })),
-  })),
-  loggedOutItems: PropTypes.arrayOf(PropTypes.shape({
+const mobileHeaderMainOrSecondaryMenuPropTypes = PropTypes.oneOfType([
+  PropTypes.node,
+  PropTypes.array,
+]);
+
+const mobileHeaderUserMenuPropTypes = PropTypes.arrayOf(PropTypes.shape({
+  heading: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.oneOf(['item', 'menu']),
     href: PropTypes.string,
     content: PropTypes.string,
+    isActive: PropTypes.bool,
+    onClick: PropTypes.func,
   })),
+}));
+
+const mobileHeaderLoggedOutItemsPropTypes = PropTypes.arrayOf(PropTypes.shape({
+  type: PropTypes.oneOf(['item', 'menu']),
+  href: PropTypes.string,
+  content: PropTypes.string,
+}));
+
+MobileHeader.propTypes = {
+  mainMenu: mobileHeaderMainOrSecondaryMenuPropTypes,
+  secondaryMenu: mobileHeaderMainOrSecondaryMenuPropTypes,
+  userMenu: mobileHeaderUserMenuPropTypes,
+  loggedOutItems: mobileHeaderLoggedOutItemsPropTypes,
   logo: PropTypes.string,
   logoAltText: PropTypes.string,
   logoDestination: PropTypes.string,
@@ -233,5 +236,5 @@ MobileHeader.defaultProps = {
 
 };
 
-export { MobileHeaderMainMenu, MobileHeaderUserMenu, MobileLoggedOutItems };
+export { MobileHeaderMainMenu, mobileHeaderMainOrSecondaryMenuPropTypes, MobileHeaderUserMenu, mobileHeaderUserMenuPropTypes, MobileLoggedOutItems, mobileHeaderLoggedOutItemsPropTypes };
 export default injectIntl(MobileHeader);

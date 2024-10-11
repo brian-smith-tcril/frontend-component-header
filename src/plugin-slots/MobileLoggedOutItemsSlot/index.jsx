@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
-import { MobileLoggedOutItems } from '../../MobileHeader';
+import { MobileLoggedOutItems, mobileHeaderLoggedOutItemsPropTypes } from '../../MobileHeader';
 
 const MobileLoggedOutItemsSlot = ({
   items
@@ -16,10 +15,8 @@ const MobileLoggedOutItemsSlot = ({
   </PluginSlot>
 );
 
-// LogoSlot.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   src: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
+MobileLoggedOutItemsSlot.propTypes = {
+  items: mobileHeaderLoggedOutItemsPropTypes,
+};
 
 export default MobileLoggedOutItemsSlot;
