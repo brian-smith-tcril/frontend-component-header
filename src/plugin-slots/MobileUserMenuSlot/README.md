@@ -1,36 +1,44 @@
-# Mobile Main Menu Slot
+# Mobile User Menu Slot
 
-### Slot ID: `mobile_main_menu_slot`
+### Slot ID: `mobile_user_menu_slot`
 
 ## Description
 
-This slot is used to replace/modify/hide the mobile main menu.
+This slot is used to replace/modify/hide the mobile user menu.
 
 ## Examples
 
 ### Modify Items
 
-The following `env.config.jsx` will modify the items in the mobile main menu.
+The following `env.config.jsx` will modify the items in the mobile user menu.
 
 ```jsx
 import { PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
-const modifyMainMenu = ( widget ) => {
+const modifyUserMenu = ( widget ) => {
   widget.content.menu = [
     {
-      type: 'item',
-      href: 'https://openedx.org/',
-      content: 'openedx.org',
+      items: [
+        {
+          type: 'item',
+          href: 'https://openedx.org/',
+          content: 'openedx.org',
+        },
+        {
+          type: 'item',
+          href: 'https://docs.openedx.org/en/latest/',
+          content: 'Documentation',
+        },
+      ]
     },
     {
-      type: 'item',
-      href: 'https://docs.openedx.org/en/latest/',
-      content: 'Documentation',
-    },
-    {
-      type: 'item',
-      href: 'https://discuss.openedx.org/',
-      content: 'Forums',
+      items: [
+        {
+          type: 'item',
+          href: 'https://discuss.openedx.org/',
+          content: 'Forums',
+        }
+      ]
     }
   ];
   return widget;
@@ -38,13 +46,13 @@ const modifyMainMenu = ( widget ) => {
 
 const config = {
   pluginSlots: {
-    mobile_main_menu_slot: {
+    mobile_user_menu_slot: {
       keepDefault: true,
       plugins: [
         {
           op: PLUGIN_OPERATIONS.Modify,
           widgetId: 'default_contents',
-          fn: modifyMainMenu,
+          fn: modifyUserMenu,
         },
       ]
     },
@@ -56,20 +64,20 @@ export default config;
 
 ### Replace Menu with Custom Component
 
-The following `env.config.jsx` will replace the mobile main menu entirely (in this case with a centered 🗺️ `h1`)
+The following `env.config.jsx` will replace the mobile main user entirely (in this case with a centered 🗺️ `h1`)
 
 ```jsx
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
 const config = {
   pluginSlots: {
-    mobile_main_menu_slot: {
+    mobile_user_menu_slot: {
       keepDefault: false,
       plugins: [
         {
           op: PLUGIN_OPERATIONS.Insert,
           widget: {
-            id: 'custom_main_menu_component',
+            id: 'custom_user_menu_component',
             type: DIRECT_PLUGIN,
             RenderWidget: () => (
               <h1 style={{textAlign: 'center'}}>🗺️</h1>
@@ -86,20 +94,20 @@ export default config;
 
 ### Add Custom Components before and after Menu
 
-The following `env.config.jsx` will place custom components before and after the mobile main menu  (in this case centered `h1`s with 🌞 and 🌚).
+The following `env.config.jsx` will place custom components before and after the mobile user menu (in this case centered `h1`s with 🌞 and 🌚).
 
 ```jsx
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
 const config = {
   pluginSlots: {
-    mobile_main_menu_slot: {
+    mobile_user_menu_slot: {
       keepDefault: true,
       plugins: [
         {
           op: PLUGIN_OPERATIONS.Insert,
           widget: {
-            id: 'custom_before_main_menu_component',
+            id: 'custom_before_user_menu_component',
             type: DIRECT_PLUGIN,
             priority: 10,
             RenderWidget: () => (
@@ -110,7 +118,7 @@ const config = {
         {
           op: PLUGIN_OPERATIONS.Insert,
           widget: {
-            id: 'custom_after_main_menu_component',
+            id: 'custom_after_user_menu_component',
             type: DIRECT_PLUGIN,
             priority: 90,
             RenderWidget: () => (
