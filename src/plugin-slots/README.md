@@ -8,3 +8,5 @@
 * [`learning_help_slot`](./LearningHelpSlot/)
 * [`desktop_logged_out_items_slot`](./DesktopLoggedOutItemsSlot/)
 * [`mobile_logged_out_items_slot`](./MobileLoggedOutItemsSlot/)
+* [`mobile_user_menu_slot`](./MobileUserMenuSlot/)
+* [`desktop_user_menu_slot`](./DesktopUserMenuSlot/)

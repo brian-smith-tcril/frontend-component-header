@@ -10,6 +10,7 @@ import LogoSlot from './plugin-slots/LogoSlot';
 import DesktopLoggedOutItemsSlot from './plugin-slots/DesktopLoggedOutItemsSlot';
 import DesktopMainMenuSlot from './plugin-slots/DesktopMainMenuSlot';
 import DesktopSecondaryMenuSlot from './plugin-slots/DesktopSecondaryMenuSlot';
+import DesktopUserMenuSlot from './plugin-slots/DesktopUserMenuSlot'
 
 // i18n
 import messages from './Header.messages';
@@ -72,6 +73,28 @@ const DesktopLoggedOutItems = ({items}) => {
   ));
 }
 
+const DesktopHeaderUserMenu = ({menu}) => {
+  return menu.map((group, index) => (
+    // eslint-disable-next-line react/jsx-no-comment-textnodes,react/no-array-index-key
+    <React.Fragment key={index}>
+      {group.heading && <div className="dropdown-header" role="heading" aria-level="1">{group.heading}</div>}
+      {group.items.map(({
+        type, content, href, disabled, isActive, onClick,
+      }) => (
+        <a
+          className={`dropdown-${type}${isActive ? ' active' : ''}${disabled ? ' disabled' : ''}`}
+          key={`${type}-${content}`}
+          href={href}
+          onClick={onClick || null}
+        >
+          {content}
+        </a>
+      ))}
+      {index < menu.length - 1 && <div className="dropdown-divider" role="separator" />}
+    </React.Fragment>
+  ));
+}
+
 class DesktopHeader extends React.Component {
   constructor(props) { // eslint-disable-line no-useless-constructor
     super(props);
@@ -106,25 +129,7 @@ class DesktopHeader extends React.Component {
           {username} <CaretIcon role="img" aria-hidden focusable="false" />
         </MenuTrigger>
         <MenuContent className="mb-0 dropdown-menu show dropdown-menu-right pin-right shadow py-2">
-          {userMenu.map((group, index) => (
-            // eslint-disable-next-line react/jsx-no-comment-textnodes,react/no-array-index-key
-            <React.Fragment key={index}>
-              {group.heading && <div className="dropdown-header" role="heading" aria-level="1">{group.heading}</div>}
-              {group.items.map(({
-                type, content, href, disabled, isActive, onClick,
-              }) => (
-                <a
-                  className={`dropdown-${type}${isActive ? ' active' : ''}${disabled ? ' disabled' : ''}`}
-                  key={`${type}-${content}`}
-                  href={href}
-                  onClick={onClick || null}
-                >
-                  {content}
-                </a>
-              ))}
-              {index < userMenu.length - 1 && <div className="dropdown-divider" role="separator" />}
-            </React.Fragment>
-          ))}
+          <DesktopUserMenuSlot menu={userMenu} />
         </MenuContent>
       </Menu>
     );
@@ -225,5 +230,5 @@ DesktopHeader.defaultProps = {
   loggedIn: false,
 };
 
-export { DesktopHeaderMainOrSecondaryMenu, DesktopLoggedOutItems };
+export { DesktopHeaderMainOrSecondaryMenu, DesktopHeaderUserMenu, DesktopLoggedOutItems };
 export default injectIntl(DesktopHeader);

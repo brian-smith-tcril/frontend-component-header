@@ -9,12 +9,37 @@ import { Dropdown } from '@openedx/paragon';
 
 import messages from './messages';
 
-const AuthenticatedUserDropdown = ({ intl, username }) => {
-  const dashboardMenuItem = (
-    <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/dashboard`}>
-      {intl.formatMessage(messages.dashboard)}
+const LearningHeaderUserMenuItems = ({items}) => {
+  return items.map((item) => (
+    <Dropdown.Item href={item.href}>
+      {item.message}
     </Dropdown.Item>
-  );
+  ));
+}
+
+const AuthenticatedUserDropdown = ({ intl, username }) => {
+  const dropdownItems = [
+    {
+      message: intl.formatMessage(messages.dashboard),
+      href: `${getConfig().LMS_BASE_URL}/dashboard`,
+    },
+    {
+      message: intl.formatMessage(messages.profile),
+      href: `${getConfig().ACCOUNT_PROFILE_URL}/u/${username}`,
+    },
+    {
+      message: intl.formatMessage(messages.account),
+      href: getConfig().ACCOUNT_SETTINGS_URL
+    },
+    ...(getConfig().ORDER_HISTORY_URL ? [{
+      message: intl.formatMessage(messages.orderHistory),
+      href: getConfig().ORDER_HISTORY_URL
+    }] : []),
+    {
+      message: intl.formatMessage(messages.signOut),
+      href: getConfig().LOGOUT_URL
+    }
+  ];
 
   return (
     <>
@@ -26,21 +51,7 @@ const AuthenticatedUserDropdown = ({ intl, username }) => {
           </span>
         </Dropdown.Toggle>
         <Dropdown.Menu className="dropdown-menu-right">
-          {dashboardMenuItem}
-          <Dropdown.Item href={`${getConfig().ACCOUNT_PROFILE_URL}/u/${username}`}>
-            {intl.formatMessage(messages.profile)}
-          </Dropdown.Item>
-          <Dropdown.Item href={getConfig().ACCOUNT_SETTINGS_URL}>
-            {intl.formatMessage(messages.account)}
-          </Dropdown.Item>
-          { getConfig().ORDER_HISTORY_URL && (
-            <Dropdown.Item href={getConfig().ORDER_HISTORY_URL}>
-              {intl.formatMessage(messages.orderHistory)}
-            </Dropdown.Item>
-          )}
-          <Dropdown.Item href={getConfig().LOGOUT_URL}>
-            {intl.formatMessage(messages.signOut)}
-          </Dropdown.Item>
+          <LearningHeaderUserMenuItems items={dropdownItems} />
         </Dropdown.Menu>
       </Dropdown>
     </>
