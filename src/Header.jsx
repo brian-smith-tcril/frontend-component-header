@@ -11,7 +11,7 @@ import {
 } from '@edx/frontend-platform';
 
 import PropTypes from 'prop-types';
-import DesktopHeader from './DesktopHeader';
+import DesktopHeaderSlot from './plugin-slots/DesktopHeaderSlot';
 import MobileHeader from './MobileHeader';
 
 import messages from './Header.messages';
@@ -126,7 +126,7 @@ const Header = ({
         <MobileHeader {...props} />
       </Responsive>
       <Responsive minWidth={769}>
-        <DesktopHeader {...props} />
+        <DesktopHeaderSlot props={props} />
       </Responsive>
     </>
   );
