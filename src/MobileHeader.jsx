@@ -9,6 +9,7 @@ import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
 import MobileLoggedOutItemsSlot from './plugin-slots/MobileLoggedOutItemsSlot';
 import MobileMainMenuSlot from './plugin-slots/MobileMainMenuSlot';
+import MobileUserMenuSlot from './plugin-slots/MobileUserMenuSlot';
 
 // i18n
 import messages from './Header.messages';
@@ -72,6 +73,24 @@ const MobileLoggedOutItems = ({items}) => {
   ));
 }
 
+const MobileHeaderUserMenu = ({menu}) => {
+  return menu.map((group) => (
+    group.items.map(({
+      type, content, href, disabled, isActive, onClick,
+    }) => (
+      <li className="nav-item" key={`${type}-${content}`}>
+        <a
+          className={`nav-link${isActive ? ' active' : ''}${disabled ? ' disabled' : ''}`}
+          href={href}
+          onClick={onClick || null}
+        >
+          {content}
+        </a>
+      </li>
+    ))
+  ));
+}
+
 class MobileHeader extends React.Component {
   constructor(props) { // eslint-disable-line no-useless-constructor
     super(props);
@@ -84,22 +103,7 @@ class MobileHeader extends React.Component {
 
   renderUserMenuItems() {
     const { userMenu } = this.props;
-
-    return userMenu.map((group) => (
-      group.items.map(({
-        type, content, href, disabled, isActive, onClick,
-      }) => (
-        <li className="nav-item" key={`${type}-${content}`}>
-          <a
-            className={`nav-link${isActive ? ' active' : ''}${disabled ? ' disabled' : ''}`}
-            href={href}
-            onClick={onClick || null}
-          >
-            {content}
-          </a>
-        </li>
-      ))
-    ));
+    return <MobileUserMenuSlot menu={userMenu} />
   }
 
   renderLoggedOutItems() {
@@ -229,5 +233,5 @@ MobileHeader.defaultProps = {
 
 };
 
-export { MobileHeaderMainMenu, MobileLoggedOutItems };
+export { MobileHeaderMainMenu, MobileHeaderUserMenu, MobileLoggedOutItems };
 export default injectIntl(MobileHeader);
