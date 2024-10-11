@@ -6,3 +6,5 @@
 * [`mobile_main_menu_slot`](./MobileMainMenuSlot/)
 * [`course_info_slot`](./CourseInfoSlot/)
 * [`learning_help_slot`](./LearningHelpSlot/)
+* [`desktop_logged_out_items_slot`](./DesktopLoggedOutItemsSlot/)
+* [`mobile_logged_out_items_slot`](./MobileLoggedOutItemsSlot/)
