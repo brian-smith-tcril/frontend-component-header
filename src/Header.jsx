@@ -12,7 +12,7 @@ import {
 
 import PropTypes from 'prop-types';
 import DesktopHeaderSlot from './plugin-slots/DesktopHeaderSlot';
-import MobileHeader from './MobileHeader';
+import MobileHeaderSlot from './plugin-slots/MobileHeaderSlot';
 
 import messages from './Header.messages';
 
@@ -123,7 +123,7 @@ const Header = ({
   return (
     <>
       <Responsive maxWidth={769}>
-        <MobileHeader {...props} />
+        <MobileHeaderSlot props={props} />
       </Responsive>
       <Responsive minWidth={769}>
         <DesktopHeaderSlot props={props} />
