@@ -7,23 +7,37 @@ import { Button } from '@openedx/paragon';
 
 import genericMessages from '../generic/messages';
 
-const AnonymousUserMenu = ({ intl }) => (
-  <div>
+const LoggedOutButtons = ({buttonsInfo}) => {
+  return buttonsInfo.map((buttonInfo) => (
     <Button
-      className="mr-3"
-      variant="outline-primary"
-      href={`${getConfig().LMS_BASE_URL}/register?next=${encodeURIComponent(global.location.href)}`}
+      className='ml-3'
+      variant={buttonInfo.variant ?? 'outline-primary'}
+      href={buttonInfo.href}
     >
-      {intl.formatMessage(genericMessages.registerSentenceCase)}
+      {buttonInfo.message}
     </Button>
-    <Button
-      variant="primary"
-      href={`${getLoginRedirectUrl(global.location.href)}`}
-    >
-      {intl.formatMessage(genericMessages.signInSentenceCase)}
-    </Button>
-  </div>
-);
+  ));
+}
+
+const AnonymousUserMenu = ({ intl }) => {
+  const buttonsInfo = [
+    {
+      message: intl.formatMessage(genericMessages.registerSentenceCase),
+      href: `${getConfig().LMS_BASE_URL}/register?next=${encodeURIComponent(global.location.href)}`
+    },
+    {
+      message: intl.formatMessage(genericMessages.signInSentenceCase),
+      href: getLoginRedirectUrl(global.location.href),
+      variant: 'primary'
+    }
+  ];
+
+  return (
+    <div>
+      <LoggedOutButtons buttonsInfo={buttonsInfo} />
+    </div>
+  )
+};
 
 AnonymousUserMenu.propTypes = {
   intl: intlShape.isRequired,

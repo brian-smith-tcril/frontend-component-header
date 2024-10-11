@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import { DesktopLoggedOutItems } from '../../DesktopHeader';
 
-const DesktopLoggedOutItemsSlot = ({
+const LearningLoggedOutItemsSlot = ({
   items
 }) => (
   <PluginSlot
-    id="desktop_logged_out_items_slot"
+    id="learning_logged_out_items_slot"
     slotOptions={{
       mergeProps: true,
     }}
@@ -22,4 +22,4 @@ const DesktopLoggedOutItemsSlot = ({
 //   alt: PropTypes.string.isRequired,
 // };
 
-export default DesktopLoggedOutItemsSlot;
+export default LearningLoggedOutItemsSlot;
