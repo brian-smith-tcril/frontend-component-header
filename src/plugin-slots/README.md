@@ -11,3 +11,4 @@
 * [`mobile_user_menu_slot`](./MobileUserMenuSlot/)
 * [`desktop_user_menu_slot`](./DesktopUserMenuSlot/)
 * [`learning_user_menu_slot`](./LearningUserMenuSlot/)
+* [`learning_logged_out_items_slot`](./LearningLoggedOutItemsSlot/)
