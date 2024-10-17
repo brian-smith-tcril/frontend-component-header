@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
-import { MobileHeaderMainMenu, mobileHeaderMainOrSecondaryMenuPropTypes } from '../../MobileHeader';
+import { MobileHeaderMainMenu } from '../../MobileHeader';
 
 const MobileMainMenuSlot = ({
   menu
@@ -15,8 +16,13 @@ const MobileMainMenuSlot = ({
   </PluginSlot>
 );
 
+export const mobileHeaderMainMenuDataShape = PropTypes.oneOfType([
+  PropTypes.node,
+  PropTypes.array,
+]);
+
 MobileMainMenuSlot.propTypes = {
-  menu: mobileHeaderMainOrSecondaryMenuPropTypes,
+  menu: mobileHeaderMainMenuDataShape,
 };
 
 export default MobileMainMenuSlot;

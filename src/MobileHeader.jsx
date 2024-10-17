@@ -7,9 +7,9 @@ import { getConfig } from '@edx/frontend-platform';
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
-import MobileLoggedOutItemsSlot from './plugin-slots/MobileLoggedOutItemsSlot';
-import MobileMainMenuSlot from './plugin-slots/MobileMainMenuSlot';
-import MobileUserMenuSlot from './plugin-slots/MobileUserMenuSlot';
+import MobileLoggedOutItemsSlot, { mobileHeaderLoggedOutItemsDataShape } from './plugin-slots/MobileLoggedOutItemsSlot';
+import MobileMainMenuSlot, { mobileHeaderMainMenuDataShape } from './plugin-slots/MobileMainMenuSlot';
+import MobileUserMenuSlot, { mobileHeaderUserMenuDataShape } from './plugin-slots/MobileUserMenuSlot';
 
 // i18n
 import messages from './Header.messages';
@@ -182,33 +182,11 @@ class MobileHeader extends React.Component {
   }
 }
 
-const mobileHeaderMainOrSecondaryMenuPropTypes = PropTypes.oneOfType([
-  PropTypes.node,
-  PropTypes.array,
-]);
-
-const mobileHeaderUserMenuPropTypes = PropTypes.arrayOf(PropTypes.shape({
-  heading: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.oneOf(['item', 'menu']),
-    href: PropTypes.string,
-    content: PropTypes.string,
-    isActive: PropTypes.bool,
-    onClick: PropTypes.func,
-  })),
-}));
-
-const mobileHeaderLoggedOutItemsPropTypes = PropTypes.arrayOf(PropTypes.shape({
-  type: PropTypes.oneOf(['item', 'menu']),
-  href: PropTypes.string,
-  content: PropTypes.string,
-}));
-
-MobileHeader.propTypes = {
-  mainMenu: mobileHeaderMainOrSecondaryMenuPropTypes,
-  secondaryMenu: mobileHeaderMainOrSecondaryMenuPropTypes,
-  userMenu: mobileHeaderUserMenuPropTypes,
-  loggedOutItems: mobileHeaderLoggedOutItemsPropTypes,
+const mobileHeaderPropTypes = {
+  mainMenu: mobileHeaderMainMenuDataShape,
+  secondaryMenu: mobileHeaderMainMenuDataShape,
+  userMenu: mobileHeaderUserMenuDataShape,
+  loggedOutItems: mobileHeaderLoggedOutItemsDataShape,
   logo: PropTypes.string,
   logoAltText: PropTypes.string,
   logoDestination: PropTypes.string,
@@ -216,6 +194,10 @@ MobileHeader.propTypes = {
   username: PropTypes.string,
   loggedIn: PropTypes.bool,
   stickyOnMobile: PropTypes.bool,
+};
+
+MobileHeader.propTypes = {
+  ...mobileHeaderPropTypes,
 
   // i18n
   intl: intlShape.isRequired,
@@ -236,5 +218,5 @@ MobileHeader.defaultProps = {
 
 };
 
-export { MobileHeaderMainMenu, mobileHeaderMainOrSecondaryMenuPropTypes, MobileHeaderUserMenu, mobileHeaderUserMenuPropTypes, MobileLoggedOutItems, mobileHeaderLoggedOutItemsPropTypes };
+export { MobileHeaderMainMenu, MobileHeaderUserMenu, MobileLoggedOutItems, mobileHeaderPropTypes };
 export default injectIntl(MobileHeader);

@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
-import MobileHeader from '../../MobileHeader';
+import MobileHeader, { mobileHeaderPropTypes } from '../../MobileHeader';
 
 const MobileHeaderSlot = ({
   props
@@ -16,10 +15,6 @@ const MobileHeaderSlot = ({
   </PluginSlot>
 );
 
-// LogoSlot.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   src: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
+MobileHeaderSlot.propTypes = mobileHeaderPropTypes;
 
 export default MobileHeaderSlot;
