@@ -8,7 +8,7 @@ import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
 import DesktopLoggedOutItemsSlot from './plugin-slots/DesktopLoggedOutItemsSlot';
-import DesktopMainMenuSlot from './plugin-slots/DesktopMainMenuSlot';
+import DesktopMainMenuSlot, { desktopHeaderMainOrSecondaryMenuDataShape } from './plugin-slots/DesktopMainMenuSlot';
 import DesktopSecondaryMenuSlot from './plugin-slots/DesktopSecondaryMenuSlot';
 import DesktopUserMenuSlot, { desktopUserMenuDataShape } from './plugin-slots/DesktopUserMenuSlot'
 
@@ -59,6 +59,10 @@ const DesktopHeaderMainOrSecondaryMenu = ({menu}) => {
       </Menu>
     );
   });
+}
+
+DesktopHeaderMainOrSecondaryMenu.propTypes = {
+  menu: desktopHeaderMainOrSecondaryMenuDataShape,
 }
 
 const DesktopLoggedOutItems = ({items}) => {
@@ -183,14 +187,8 @@ class DesktopHeader extends React.Component {
 }
 
 DesktopHeader.propTypes = {
-  mainMenu: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.array,
-  ]),
-  secondaryMenu: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.array,
-  ]),
+  mainMenu: desktopHeaderMainOrSecondaryMenuDataShape,
+  secondaryMenu: desktopHeaderMainOrSecondaryMenuDataShape,
   userMenu: desktopUserMenuDataShape,
   loggedOutItems: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.oneOf(['item', 'menu']),

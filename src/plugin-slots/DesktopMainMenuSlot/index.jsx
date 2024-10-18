@@ -16,11 +16,13 @@ const DesktopMainMenuSlot = ({
   </PluginSlot>
 );
 
+export const desktopHeaderMainOrSecondaryMenuDataShape = PropTypes.oneOfType([
+  PropTypes.node,
+  PropTypes.array,
+]);
+
 DesktopMainMenuSlot.propTypes = {
-  menu: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.array,
-  ]),
+  menu: desktopHeaderMainOrSecondaryMenuDataShape,
 };
 
 export default DesktopMainMenuSlot;

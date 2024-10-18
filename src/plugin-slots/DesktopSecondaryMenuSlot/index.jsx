@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import { DesktopHeaderMainOrSecondaryMenu } from '../../DesktopHeader';
+import { desktopHeaderMainOrSecondaryMenuDataShape } from '../DesktopMainMenuSlot';
 
 const DesktopSecondaryMenuSlot = ({
   menu
@@ -17,10 +18,7 @@ const DesktopSecondaryMenuSlot = ({
 );
 
 DesktopSecondaryMenuSlot.propTypes = {
-  menu: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.array,
-  ]),
+  menu: desktopHeaderMainOrSecondaryMenuDataShape,
 };
 
 export default DesktopSecondaryMenuSlot;
