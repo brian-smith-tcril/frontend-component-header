@@ -16,10 +16,14 @@ const LearningLoggedOutItemsSlot = ({
   </PluginSlot>
 );
 
-// LogoSlot.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   src: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
+export const learningHeaderLoggedOutItemsDataShape = {
+  buttonsInfo: PropTypes.arrayOf(PropTypes.shape({
+    message: PropTypes.string,
+    href: PropTypes.string,
+    variant: PropTypes.string,
+  })),
+};
+
+LearningLoggedOutItemsSlot.propTypes = learningHeaderLoggedOutItemsDataShape;
 
 export default LearningLoggedOutItemsSlot;

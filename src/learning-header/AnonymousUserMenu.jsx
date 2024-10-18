@@ -4,13 +4,14 @@ import { getConfig } from '@edx/frontend-platform';
 import { getLoginRedirectUrl } from '@edx/frontend-platform/auth';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Button } from '@openedx/paragon';
-import LearningLoggedOutItemsSlot from '../plugin-slots/LearningLoggedOutItemsSlot';
+import LearningLoggedOutItemsSlot, { learningHeaderLoggedOutItemsDataShape } from '../plugin-slots/LearningLoggedOutItemsSlot';
 
 import genericMessages from '../generic/messages';
 
 const LearningLoggedOutButtons = ({buttonsInfo}) => {
-  return buttonsInfo.map((buttonInfo) => (
+  return buttonsInfo.map((buttonInfo, index) => (
     <Button
+      key={index}
       className='ml-3'
       variant={buttonInfo.variant ?? 'outline-primary'}
       href={buttonInfo.href}
@@ -19,6 +20,8 @@ const LearningLoggedOutButtons = ({buttonsInfo}) => {
     </Button>
   ));
 }
+
+LearningLoggedOutButtons.propTypes = learningHeaderLoggedOutItemsDataShape;
 
 const AnonymousUserMenu = ({ intl }) => {
   const buttonsInfo = [
