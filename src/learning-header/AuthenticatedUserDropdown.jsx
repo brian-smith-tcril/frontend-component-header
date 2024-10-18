@@ -67,5 +67,5 @@ AuthenticatedUserDropdown.propTypes = {
   username: PropTypes.string.isRequired,
 };
 
-export { LearningHeaderUserMenuItems, learningHeaderUserMenuDataShape };
+export { LearningHeaderUserMenuItems };
 export default injectIntl(AuthenticatedUserDropdown);

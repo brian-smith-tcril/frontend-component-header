@@ -16,12 +16,12 @@ const LearningUserMenuSlot = ({
   </PluginSlot>
 );
 
-export const learningHeaderUserMenuDataShape = PropTypes.shape({
+export const learningHeaderUserMenuDataShape = {
   items: PropTypes.arrayOf(PropTypes.shape({
     message: PropTypes.string,
     href: PropTypes.string,
   })),
-});
+};
 
 LearningUserMenuSlot.propTypes = learningHeaderUserMenuDataShape;
 
