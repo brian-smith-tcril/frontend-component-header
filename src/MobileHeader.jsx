@@ -182,7 +182,7 @@ class MobileHeader extends React.Component {
   }
 }
 
-const mobileHeaderPropTypes = {
+const mobileHeaderDataShape = {
   mainMenu: mobileHeaderMainMenuDataShape,
   secondaryMenu: mobileHeaderMainMenuDataShape,
   userMenu: mobileHeaderUserMenuDataShape,
@@ -197,7 +197,7 @@ const mobileHeaderPropTypes = {
 };
 
 MobileHeader.propTypes = {
-  ...mobileHeaderPropTypes,
+  ...mobileHeaderDataShape,
 
   // i18n
   intl: intlShape.isRequired,
@@ -218,5 +218,5 @@ MobileHeader.defaultProps = {
 
 };
 
-export { MobileHeaderMainMenu, MobileHeaderUserMenu, MobileLoggedOutItems, mobileHeaderPropTypes };
+export { MobileHeaderMainMenu, MobileHeaderUserMenu, MobileLoggedOutItems, mobileHeaderDataShape };
 export default injectIntl(MobileHeader);

@@ -7,7 +7,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { Menu, MenuTrigger, MenuContent } from './Menu';
 import Avatar from './Avatar';
 import LogoSlot from './plugin-slots/LogoSlot';
-import DesktopLoggedOutItemsSlot from './plugin-slots/DesktopLoggedOutItemsSlot';
+import DesktopLoggedOutItemsSlot, { desktopLoggedOutItemsDataShape } from './plugin-slots/DesktopLoggedOutItemsSlot';
 import DesktopMainMenuSlot, { desktopHeaderMainOrSecondaryMenuDataShape } from './plugin-slots/DesktopMainMenuSlot';
 import DesktopSecondaryMenuSlot from './plugin-slots/DesktopSecondaryMenuSlot';
 import DesktopUserMenuSlot, { desktopUserMenuDataShape } from './plugin-slots/DesktopUserMenuSlot'
@@ -77,6 +77,10 @@ const DesktopLoggedOutItems = ({items}) => {
   ));
 }
 
+DesktopLoggedOutItems.propTypes = {
+  items: desktopLoggedOutItemsDataShape
+}
+
 const DesktopHeaderUserMenu = ({menu}) => {
   return menu.map((group, index) => (
     // eslint-disable-next-line react/jsx-no-comment-textnodes,react/no-array-index-key
@@ -97,6 +101,10 @@ const DesktopHeaderUserMenu = ({menu}) => {
       {index < menu.length - 1 && <div className="dropdown-divider" role="separator" />}
     </React.Fragment>
   ));
+}
+
+DesktopHeaderUserMenu.propTypes = {
+  menu: desktopUserMenuDataShape
 }
 
 class DesktopHeader extends React.Component {
@@ -186,21 +194,21 @@ class DesktopHeader extends React.Component {
   }
 }
 
-DesktopHeader.propTypes = {
+const desktopHeaderDataShape = {
   mainMenu: desktopHeaderMainOrSecondaryMenuDataShape,
   secondaryMenu: desktopHeaderMainOrSecondaryMenuDataShape,
   userMenu: desktopUserMenuDataShape,
-  loggedOutItems: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.oneOf(['item', 'menu']),
-    href: PropTypes.string,
-    content: PropTypes.string,
-  })),
+  loggedOutItems: desktopLoggedOutItemsDataShape,
   logo: PropTypes.string,
   logoAltText: PropTypes.string,
   logoDestination: PropTypes.string,
   avatar: PropTypes.string,
   username: PropTypes.string,
   loggedIn: PropTypes.bool,
+}
+
+DesktopHeader.propTypes = {
+  ...desktopHeaderDataShape,
 
   // i18n
   intl: intlShape.isRequired,
@@ -219,5 +227,5 @@ DesktopHeader.defaultProps = {
   loggedIn: false,
 };
 
-export { DesktopHeaderMainOrSecondaryMenu, DesktopHeaderUserMenu, DesktopLoggedOutItems };
+export { DesktopHeaderMainOrSecondaryMenu, DesktopHeaderUserMenu, DesktopLoggedOutItems, desktopHeaderDataShape };
 export default injectIntl(DesktopHeader);

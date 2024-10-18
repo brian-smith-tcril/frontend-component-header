@@ -1,6 +1,6 @@
 import React from 'react';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
-import MobileHeader, { mobileHeaderPropTypes } from '../../MobileHeader';
+import MobileHeader, { mobileHeaderDataShape } from '../../MobileHeader';
 
 const MobileHeaderSlot = ({
   props
@@ -15,6 +15,6 @@ const MobileHeaderSlot = ({
   </PluginSlot>
 );
 
-MobileHeaderSlot.propTypes = mobileHeaderPropTypes;
+MobileHeaderSlot.propTypes = mobileHeaderDataShape;
 
 export default MobileHeaderSlot;

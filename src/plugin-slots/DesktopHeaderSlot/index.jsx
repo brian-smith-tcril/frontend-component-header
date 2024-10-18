@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
-import DesktopHeader from '../../DesktopHeader';
+import DesktopHeader, { desktopHeaderDataShape } from '../../DesktopHeader';
 
 const DesktopHeaderSlot = ({
   props
@@ -16,10 +16,6 @@ const DesktopHeaderSlot = ({
   </PluginSlot>
 );
 
-// LogoSlot.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   src: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
+DesktopHeaderSlot.propTypes = desktopHeaderDataShape;
 
 export default DesktopHeaderSlot;
