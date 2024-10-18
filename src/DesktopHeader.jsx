@@ -10,7 +10,7 @@ import LogoSlot from './plugin-slots/LogoSlot';
 import DesktopLoggedOutItemsSlot from './plugin-slots/DesktopLoggedOutItemsSlot';
 import DesktopMainMenuSlot from './plugin-slots/DesktopMainMenuSlot';
 import DesktopSecondaryMenuSlot from './plugin-slots/DesktopSecondaryMenuSlot';
-import DesktopUserMenuSlot from './plugin-slots/DesktopUserMenuSlot'
+import DesktopUserMenuSlot, { desktopUserMenuDataShape } from './plugin-slots/DesktopUserMenuSlot'
 
 // i18n
 import messages from './Header.messages';
@@ -191,16 +191,7 @@ DesktopHeader.propTypes = {
     PropTypes.node,
     PropTypes.array,
   ]),
-  userMenu: PropTypes.arrayOf(PropTypes.shape({
-    heading: PropTypes.string,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      type: PropTypes.oneOf(['item', 'menu']),
-      href: PropTypes.string,
-      content: PropTypes.string,
-      isActive: PropTypes.bool,
-      onClick: PropTypes.func,
-    })),
-  })),
+  userMenu: desktopUserMenuDataShape,
   loggedOutItems: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.oneOf(['item', 'menu']),
     href: PropTypes.string,

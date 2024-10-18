@@ -16,10 +16,19 @@ const DesktopUserMenuSlot = ({
   </PluginSlot>
 );
 
-// LogoSlot.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   src: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
+export const desktopUserMenuDataShape = PropTypes.arrayOf(PropTypes.shape({
+  heading: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    type: PropTypes.oneOf(['item', 'menu']),
+    href: PropTypes.string,
+    content: PropTypes.string,
+    isActive: PropTypes.bool,
+    onClick: PropTypes.func,
+  })),
+}));
+
+DesktopUserMenuSlot.propTypes = {
+  menu: desktopUserMenuDataShape,
+}
 
 export default DesktopUserMenuSlot;
