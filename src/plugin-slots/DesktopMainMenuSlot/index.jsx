@@ -16,10 +16,11 @@ const DesktopMainMenuSlot = ({
   </PluginSlot>
 );
 
-// LogoSlot.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   src: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
+DesktopMainMenuSlot.propTypes = {
+  menu: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.array,
+  ]),
+};
 
 export default DesktopMainMenuSlot;

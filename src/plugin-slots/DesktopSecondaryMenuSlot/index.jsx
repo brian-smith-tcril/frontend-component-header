@@ -16,10 +16,11 @@ const DesktopSecondaryMenuSlot = ({
   </PluginSlot>
 );
 
-// LogoSlot.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   src: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
+DesktopSecondaryMenuSlot.propTypes = {
+  menu: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.array,
+  ]),
+};
 
 export default DesktopSecondaryMenuSlot;
