@@ -7,7 +7,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Dropdown } from '@openedx/paragon';
 
-import LearningUserMenuSlot from '../plugin-slots/LearningUserMenuSlot';
+import LearningUserMenuSlot, { learningHeaderUserMenuDataShape } from '../plugin-slots/LearningUserMenuSlot';
 
 import messages from './messages';
 
@@ -18,6 +18,8 @@ const LearningHeaderUserMenuItems = ({items}) => {
     </Dropdown.Item>
   ));
 }
+
+LearningHeaderUserMenuItems.propTypes = learningHeaderUserMenuDataShape;
 
 const AuthenticatedUserDropdown = ({ intl, username }) => {
   const dropdownItems = [
@@ -65,5 +67,5 @@ AuthenticatedUserDropdown.propTypes = {
   username: PropTypes.string.isRequired,
 };
 
-export { LearningHeaderUserMenuItems };
+export { LearningHeaderUserMenuItems, learningHeaderUserMenuDataShape };
 export default injectIntl(AuthenticatedUserDropdown);

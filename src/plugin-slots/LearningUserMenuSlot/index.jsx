@@ -16,10 +16,13 @@ const LearningUserMenuSlot = ({
   </PluginSlot>
 );
 
-// LogoSlot.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   src: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
+export const learningHeaderUserMenuDataShape = PropTypes.shape({
+  items: PropTypes.arrayOf(PropTypes.shape({
+    message: PropTypes.string,
+    href: PropTypes.string,
+  })),
+});
+
+LearningUserMenuSlot.propTypes = learningHeaderUserMenuDataShape;
 
 export default LearningUserMenuSlot;
