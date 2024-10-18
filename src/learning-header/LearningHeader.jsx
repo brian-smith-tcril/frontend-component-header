@@ -7,7 +7,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 import AnonymousUserMenu from './AnonymousUserMenu';
 import AuthenticatedUserDropdown from './AuthenticatedUserDropdown';
 import LogoSlot from '../plugin-slots/LogoSlot';
-import CourseInfoSlot from '../plugin-slots/CourseInfoSlot';
+import CourseInfoSlot, { courseInfoDataShape } from '../plugin-slots/CourseInfoSlot';
 import messages from './messages';
 import LearningHelpSlot from '../plugin-slots/LearningHelpSlot';
 
@@ -21,6 +21,8 @@ const LearningHeaderCourseInfo = ({
     <span className="d-block m-0 font-weight-bold course-title">{courseTitle}</span>
   </div>
 );
+
+LearningHeaderCourseInfo.propTypes = courseInfoDataShape;
 
 const LearningHeaderHelpLink = () => {
   const intl = useIntl();
@@ -67,9 +69,7 @@ const LearningHeader = ({
 };
 
 LearningHeader.propTypes = {
-  courseOrg: PropTypes.string,
-  courseNumber: PropTypes.string,
-  courseTitle: PropTypes.string,
+  ...courseInfoDataShape,
   intl: intlShape.isRequired,
   showUserDropdown: PropTypes.bool,
 };

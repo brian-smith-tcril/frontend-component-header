@@ -19,10 +19,12 @@ const CourseInfoSlot = ({
   </PluginSlot>
 );
 
-// LogoSlot.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   src: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-// };
+export const courseInfoDataShape = {
+  courseOrg: PropTypes.string,
+  courseNumber: PropTypes.string,
+  courseTitle: PropTypes.string,
+}
+
+CourseInfoSlot.propTypes = courseInfoDataShape;
 
 export default CourseInfoSlot;
