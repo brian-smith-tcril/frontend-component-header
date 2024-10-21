@@ -12,6 +12,8 @@ This slot is used to replace/modify/hide the desktop secondary menu.
 
 The following `env.config.jsx` will modify the items in the desktop secondary menu.
 
+![Screenshot of modified items](./images/desktop_secondary_menu_modify_items.png)
+
 ```jsx
 import { PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
@@ -53,6 +55,8 @@ export default config;
 
 The following `env.config.jsx` will replace the desktop secondary menu entirely (in this case with a centered 🗺️ `h1`)
 
+![Screenshot of custom component](./images/desktop_secondary_menu_custom_component.png)
+
 ```jsx
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
@@ -82,6 +86,8 @@ export default config;
 ### Add Custom Components before and after Menu
 
 The following `env.config.jsx` will place custom components before and after the desktop secondary menu  (in this case centered `h1`s with 🌜 and 🌛).
+
+![Screenshot of custom components before and after](./images/desktop_secondary_menu_custom_components_before_after.png)
 
 ```jsx
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
