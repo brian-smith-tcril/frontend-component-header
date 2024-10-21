@@ -12,6 +12,8 @@ This slot is used to replace/modify/hide the course info.
 
 The following `env.config.jsx` will replace the course title.
 
+![Screenshot of replaced course title](./images/replace_course_title.png)
+
 ```jsx
 import { PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
@@ -42,6 +44,8 @@ export default config;
 
 The following `env.config.jsx` will replace the course info entirely (in this case with a centered 🗺️ `h1`)
 
+![Screenshot of replaced course info with custom component](./images/replace_course_info_with_custom_component.png)
+
 ```jsx
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
@@ -71,6 +75,8 @@ export default config;
 ### Add Custom Components before and after Course Info
 
 The following `env.config.jsx` will place custom components before and after the course info  (in this case centered `h1`s with 🌜 and 🌛).
+
+![Screenshot of added custom components before and after course info](./images/add_custom_components_before_and_after_course_info.png)
 
 ```jsx
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';

@@ -12,6 +12,8 @@ This slot is used to replace/modify/hide the learning help link.
 
 The following `env.config.jsx` will replace the help link entirely (in this case with a centered 🗺️ `h1`)
 
+![Screenshot of replaced learning help with custom component](./images/learning_help_custom_component.png)
+
 ```jsx
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
