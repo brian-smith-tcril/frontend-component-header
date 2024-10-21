@@ -12,6 +12,8 @@ This slot is used to replace/modify/hide the entire mobile header.
 
 The following `env.config.jsx` will replace the mobile header entirely (in this case with a centered 🗺️ `h1`)
 
+![Screenshot of custom component](./images/mobile_header_custom_component.png)
+
 ```jsx
 import { DIRECT_PLUGIN, PLUGIN_OPERATIONS } from '@openedx/frontend-plugin-framework';
 
